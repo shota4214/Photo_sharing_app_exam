@@ -18,14 +18,9 @@
           <% @pictures.each do |picture| %>
           <!-- Post preview-->
             <div class="post-preview">
-              <%= link_to picture_path(picture) do %>
-                    <h2 class="post-title"><%= picture.image %></h2>
-                    <h3 class="post-subtitle"><%= picture.content %></h3>
-              <% end %>
-                <p class="post-meta">Posted by
-                    <a href="#!">Start Bootstrap</a>
-                    on September 24, 2022<%= time_ago_in_words(picture.created_at) %>
-                </p>
+              <h2 class="post-title"><%= image_tag picture.image.url %></h2>
+              <h3 class="post-subtitle"><%= picture.content %></h3>
+              <p class="post-meta"><%= time_ago_in_words(picture.created_at) %></p>
             </div>
             <!-- Divider-->
             <hr class="my-4" />

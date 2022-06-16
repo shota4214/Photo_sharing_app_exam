@@ -13,7 +13,7 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   def new
     if params[:back]
-    @picture = Picture.new(picture_params)
+      @picture = Picture.new(picture_params)
     else
       @picture = Picture.new
     end
@@ -26,14 +26,13 @@ class PicturesController < ApplicationController
   # POST /pictures or /pictures.json
   def create
     @picture = Picture.new(picture_params)
-
-    respond_to do |format|
+    if params[:back]
+      render :new
+    else
       if @picture.save
-        format.html { redirect_to picture_url(@picture), notice: "Picture was successfully created." }
-        format.json { render :show, status: :created, location: @picture }
+        redirect_to pictures_path, notice: "投稿完了"
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @picture.errors, status: :unprocessable_entity }
+        render :new
       end
     end
   end
@@ -61,6 +60,11 @@ class PicturesController < ApplicationController
     end
   end
 
+  def confirm
+    @picture = Picture.new(picutre_params)
+    render :new if @picture.invalid?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_picture
@@ -69,6 +73,6 @@ class PicturesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def picture_params
-      params.require(:picture).permit(:image, :content)
+      params.require(:picture).permit(:image, :content, :image_cahe)
     end
 end
