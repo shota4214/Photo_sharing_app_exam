@@ -4,26 +4,49 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="page-heading">
-                    <h1>Sign up</h1>
+                    <h1>YOUR PicChum</h1>
                     <span class="subheading">Have questions? I have answers.</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
+<!-- Main Content-->
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!</p>
+                <div class="my-5">
+                    <h1>Sign up</h1>
 
-<%= form_with(model:@user, local: true ) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+                    <% if @user.errors.any? %>
+                    <div id="error_explanation">
+                        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+                        <ul>
+                        <% @user.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                        </ul>
+                    </div>
+                    <% end %>
+                    <%= form_with(model:@user, local: true ) do |f| %>
+                    <%= f.label :name %>
+                    <%= f.text_field :name %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+                    <%= f.label :email %>
+                    <%= f.email_field :email %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+                    <%= f.label :password %>
+                    <%= f.password_field :password %>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_contirmation %>
+                    <%= f.label :password_confirmation %>
+                    <%= f.password_field :password_contirmation %>
 
-  <%= f.submit "Create my account" %>
-<% end %>
+                    <%= f.submit "Create my account" %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
