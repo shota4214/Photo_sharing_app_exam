@@ -1,39 +1,39 @@
 <!-- Page Header-->
 <header class="masthead" style="background-image: url(<%= asset_path 'contact-bg.jpg' %>)">
-    <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="page-heading">
-                    <h1>EDIT YOUR PicChum OK?</h1>
-                    <span class="subheading">Have questions? I have answers.</span>
-                </div>
-            </div>
-        </div>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="page-heading">
+            <h1>EDIT YOUR PicChum OK?</h1>
+            <span class="subheading">Have questions? I have answers.</span>
+          </div>
+      </div>
     </div>
+  </div>
 </header>
 <!-- Main Content-->
 <main class="mb-4">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-              <h3>Send with the following contents？</h3>
-              <%= form_with(model: @picture, local: true) do |form| %>
-                <%= form.hidden_field :image %>
-                <%= form.hidden_field :content %>
-                <p>Picture</p>
-                <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
-                <%= form.hidden_field :image_cache %>
-                <p>Content</p>
-                <%= @picture.content %><br>
-                <%= form.submit  "push" %>
-              <% end %>
-              <%= form_with(model: @picture, local: true, url: new_picture_path, method: "get") do |form| %>
-                <%= form.hidden_field :image_cache %>
-                <%= form.hidden_field :content %>
-                <%= form.submit "back", name: "back" %>
-              <% end %>
-                </div>
-            </div>
-        </div>
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <h3>Send with the following contents？</h3>
+        <%= form_with(model: @picture, local: true) do |form| %>
+          <%= form.hidden_field :image %>
+          <%= form.hidden_field :content %>
+          <p>Picture</p>
+          <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+          <%= form.hidden_field :image_cache %>
+          <p>Content</p>
+          <%= @picture.content %><br>
+          <%= form.submit  "push" %>
+        <% end %>
+        <%= form_with(model: @picture, local: true, url: new_picture_path, method: "get") do |form| %>
+          <%= form.hidden_field :image_cache %>
+          <%= form.hidden_field :content %>
+          <%= form.submit "back", name: "back" %>
+        <% end %>
+          </div>
+      </div>
     </div>
+  </div>
 </main>

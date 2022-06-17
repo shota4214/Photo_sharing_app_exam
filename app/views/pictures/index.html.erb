@@ -1,35 +1,35 @@
 <!-- Page Header-->
 <header class="masthead" style="background-image: url(<%= asset_path 'home-bg.jpg'%>)">
-    <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="site-heading">
-                    <h1>Clean Blog</h1>
-                    <span class="subheading">A Blog Theme by Start Bootstrap</span>
-                </div>
-            </div>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>Clean Blog</h1>
+          <span class="subheading">A Blog Theme by Start Bootstrap</span>
         </div>
+      </div>
     </div>
+  </div>
 </header>
 <!-- Main Content-->
 <div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-          <% @pictures.each do |picture| %>
-          <!-- Post preview-->
-            <div class="post-preview">
-            <tr>
-              <td><h2 class="post-title"><%= image_tag picture.image.url, width: '20%', height: '20%' %></h2></td>
-              <td><h3 class="post-subtitle"><%= picture.content %></h3></td>
-              <td><p class="post-meta"><%= time_ago_in_words(picture.created_at) %></p></td>
-              <td><%= link_to 'Show', picture, class: "btn btn-outline-info" %></td>
-              <td><%= link_to 'Edit', edit_picture_path(picture), class: "btn btn-outline-info" %></td>
-              <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></td>
-            </tr>
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-          <% end %>
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+      <% @pictures.each do |picture| %>
+      <!-- Post preview-->
+        <div class="post-preview">
+        <tr>
+          <td><h2 class="post-title"><%= image_tag picture.image.url, width: '20%', height: '20%' %></h2></td>
+          <td><h3 class="post-subtitle"><%= picture.content %></h3></td>
+          <td><p class="post-meta"><%= time_ago_in_words(picture.created_at) %></p></td>
+          <td><%= link_to 'Show', picture, class: "btn btn-outline-info" %></td>
+          <td><%= link_to 'Edit', edit_picture_path(picture), class: "btn btn-outline-info" %></td>
+          <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></td>
+        </tr>
         </div>
+        <!-- Divider-->
+        <hr class="my-4" />
+      <% end %>
     </div>
+  </div>
 </div>

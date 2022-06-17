@@ -5,7 +5,7 @@
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="page-heading">
           <h1>YOUR PicChum</h1>
-          <span class="subheading">Have questions? I have answers.</span>
+            <span class="subheading">Have questions? I have answers.</span>
         </div>
       </div>
     </div>
@@ -17,9 +17,18 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!</p>
-        <div class="my-5">
-          <h1><%= @user.name %>page</h1>
-          <p>email: <%= @user.email %></p>
+          <div class="my-5">
+          <h1>Log in</h1>
+          <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+
+            <%= f.label :email %>
+            <%= f.email_field :email %>
+
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+
+            <%= f.submit "Log in" %>
+          <% end %>
         </div>
       </div>
     </div>
