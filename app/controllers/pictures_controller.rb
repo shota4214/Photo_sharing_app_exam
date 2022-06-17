@@ -61,7 +61,7 @@ class PicturesController < ApplicationController
   end
 
   def confirm
-    @picture = Picture.new(picutre_params)
+    @picture = Picture.new(picture_params)
     render :new if @picture.invalid?
   end
 
@@ -73,6 +73,6 @@ class PicturesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def picture_params
-      params.require(:picture).permit(:image, :content, :image_cahe)
+      params.require(:picture).permit(:image, :content, :image_cache)
     end
 end
