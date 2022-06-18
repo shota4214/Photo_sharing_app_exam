@@ -64,6 +64,10 @@ class PicturesController < ApplicationController
     render :new if @picture.invalid?
   end
 
+  def show
+    @favorite = current_user.favorites.find_by(picture_id: @picture.id)
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_picture
