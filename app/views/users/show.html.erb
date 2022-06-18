@@ -20,6 +20,8 @@
         <div class="my-5">
           <h1><%= @user.name %> page</h1>
           <p>email: <%= @user.email %></p>
+          <%= link_to 'Favorites list', favorites_path, class: "btn btn-success" %>
+          <%= link_to 'PicChum index', pictures_path, class: "btn btn-info" %>
         </div>
       </div>
     </div>

@@ -8,4 +8,8 @@ class FavoritesController < ApplicationController
     favorite = current_user.favorites.find_by(id: params[:id]).destroy
     redirect_to pictures_path, notice: "#{favorite.picture.user.name} PicChum is unfavorite..."
   end
+
+  def index
+    @favorites = current_user.favorite_pictures
+  end
 end
