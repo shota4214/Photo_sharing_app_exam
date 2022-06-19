@@ -10,6 +10,6 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    @favorites = current_user.favorite_pictures
+    @favorites = current_user.favorite_pictures.order(created_at: :desc)
   end
 end

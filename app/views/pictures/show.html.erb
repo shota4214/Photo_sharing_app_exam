@@ -34,8 +34,12 @@
               <%= link_to 'Favorite!', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
             <% end %>
           <% end %>
-          <%= link_to 'Edit', edit_picture_path(@picture) %> |
-          <%= link_to 'Back', pictures_path %>
+          <% if @picture.user == current_user %>
+            <%= link_to 'Edit', edit_picture_path(@picture) %> |
+            <%= link_to 'Back', pictures_path %>
+          <% else %>
+            <%= link_to 'Back', pictures_path %>
+          <% end %>
           </div>
         </div>
     </div>

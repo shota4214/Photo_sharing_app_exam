@@ -3,7 +3,7 @@ class PicturesController < ApplicationController
 
   # GET /pictures or /pictures.json
   def index
-    @pictures = Picture.all
+    @pictures = Picture.all.order(created_at: :desc)
   end
 
   # GET /pictures/1 or /pictures/1.json
@@ -21,6 +21,9 @@ class PicturesController < ApplicationController
 
   # GET /pictures/1/edit
   def edit
+    unless @picture.user == current_user
+      redirect_to new_picture_path, notice: "You can't edit someone else's PicChum"
+    end
   end
 
   # POST /pictures or /pictures.json
@@ -40,22 +43,30 @@ class PicturesController < ApplicationController
   # PATCH/PUT /pictures/1 or /pictures/1.json
   def update
     respond_to do |format|
-      if @picture.update(picture_params)
-        format.html { redirect_to picture_url(@picture), notice: "Picture was successfully updated." }
-        format.json { render :show, status: :ok, location: @picture }
+      if @picture.user != current_user
+        redirect_to new_picture_path
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @picture.errors, status: :unprocessable_entity }
+        if @picture.update(picture_params)
+          format.html { redirect_to picture_url(@picture), notice: "Picture was successfully updated." }
+          format.json { render :show, status: :ok, location: @picture }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @picture.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
 
   # DELETE /pictures/1 or /pictures/1.json
   def destroy
-    @picture.destroy
-    respond_to do |format|
+    if @picture.user != current_user
+      redirect_to new_picture_path, notice: "You can't erase someone else's PicChum"
+    else
+      @picture.destroy
+      respond_to do |format|
       format.html { redirect_to pictures_url, notice: "Picture was successfully destroyed." }
       format.json { head :no_content }
+      end
     end
   end
 

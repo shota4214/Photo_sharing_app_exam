@@ -15,6 +15,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'bcrypt'
 gem 'faker'
+gem 'rails-i18n'
 
 
 group :development, :test do
