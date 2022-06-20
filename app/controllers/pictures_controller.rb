@@ -22,7 +22,7 @@ class PicturesController < ApplicationController
   # GET /pictures/1/edit
   def edit
     unless @picture.user == current_user
-      redirect_to new_picture_path, notice: "You can't edit someone else's PicChum"
+      redirect_to new_picture_path, notice: "このPicChumは編集できません"
     end
   end
 
@@ -33,7 +33,8 @@ class PicturesController < ApplicationController
       render :new
     else
       if @picture.save
-        redirect_to pictures_path, notice: "投稿完了"
+        PostingMailer.posting_mail(@picture, @picture.user.name, @picture.user.email).deliver
+        redirect_to pictures_path, notice: "PicChum投稿完了"
       else
         render :new
       end
@@ -47,7 +48,7 @@ class PicturesController < ApplicationController
         redirect_to new_picture_path
       else
         if @picture.update(picture_params)
-          format.html { redirect_to picture_url(@picture), notice: "Picture was successfully updated." }
+          format.html { redirect_to picture_url(@picture), notice: "PicChumを更新しました！" }
           format.json { render :show, status: :ok, location: @picture }
         else
           format.html { render :edit, status: :unprocessable_entity }

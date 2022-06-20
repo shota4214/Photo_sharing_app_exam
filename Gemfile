@@ -16,6 +16,7 @@ gem 'mini_magick'
 gem 'bcrypt'
 gem 'faker'
 gem 'rails-i18n'
+gem 'rexml'
 
 
 group :development, :test do
@@ -28,6 +29,7 @@ group :development do
   gem 'listen', '~> 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'letter_opener_web'
 end
 
 group :test do
