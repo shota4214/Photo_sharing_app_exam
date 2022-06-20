@@ -33,7 +33,7 @@ class PicturesController < ApplicationController
       render :new
     else
       if @picture.save
-        PostingMailer.posting_mail(@picture, @picture.user.name, @picture.user.email).deliver
+        # PostingMailer.posting_mail(@picture, @picture.user.name, @picture.user.email).deliver
         redirect_to pictures_path, notice: "PicChum投稿完了"
       else
         render :new
