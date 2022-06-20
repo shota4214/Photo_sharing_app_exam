@@ -17,10 +17,45 @@
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
+      <p>PicChumの利用にはユーザーの登録が必要です。<br>ユーザー情報を入力してください。パスワードは６文字以上で入力してください。</p>
         <div class="my-5">
-          <p>ユーザー登録を行います。<br>ユーザー情報を入力してください。</p>
-          <div class="field">
-            <%= render 'form', user: @user %>
+          <%= form_with(model: @user, local: true ) do |form| %>
+            <% if @user.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+                <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="field">
+              <%= form.label :ユーザー画像 %>
+              <%= image_tag(@user.user_image.url) if @user.user_image && @user.user_image.url %>
+              <%= form.file_field :user_image %>
+              <%= form.hidden_field :user_image_cache %>
+            </div><br>
+            <div class="field">
+              <%= form.label :ユーザー名 %>
+              <%= form.text_field :name %>
+            </div><br>
+            <div class="field">
+              <%= form.label :メールアドレス %>
+              <%= form.email_field :email %>
+            </div><br>
+            <div class="field">
+              <%= form.label :パスワード %>
+              <%= form.password_field :password %>
+            </div><br>
+            <div class="field">
+              <%= form.label :パスワード再入力 %>
+              <%= form.password_field :password_confirmation %>
+            </div><br>
+            <div class="actions">
+              <%= form.submit %>
+            </div>
+            <% end %>
           </div>
         </div>
       </div>

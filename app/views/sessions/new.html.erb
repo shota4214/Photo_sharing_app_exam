@@ -20,13 +20,12 @@
         <p>登録したユーザー情報を入力してください。</p>
           <div class="my-5">
           <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
-
-            <%= f.label :email %>
+            <%= f.label :メールアドレス %>
             <%= f.email_field :email %>
-
-            <%= f.label :password %>
+            <br>
+            <%= f.label :パスワード %>
             <%= f.password_field :password %>
-
+            <br>
             <%= f.submit "ログイン" %>
           <% end %>
         </div>
