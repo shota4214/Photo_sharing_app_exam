@@ -1,5 +1,5 @@
 <!-- Page Header-->
-<header class="masthead" style="background-image: url(<%= asset_path 'contact-bg.jpg' %>)">
+<header class="masthead" style="background-image: url(<%= asset_path 'user_show.jpg' %>)">
   <div class="container position-relative px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
@@ -28,17 +28,13 @@
           <h3>ユーザー名: <%= @user.name %></h3>
           <p>メールアドレス: <%= @user.email %></p>
         </div>
-        <div class="field">
-          <%= form_with(model: @user, local: true, url: user_path ) do |f| %>
-            <%= f.label :user_image, "画像変更→"%>
-            <%= image_tag(@user.user_image.url) if @user.user_image && @user.user_image.url %>
-            <%= f.file_field :user_image %>
-
-            <%= f.submit "画像登録！" %>
+        <% if @user == current_user %>
+            <%= link_to 'Edit', edit_user_path(@user) %> |
+            <%= link_to 'PicChum index', pictures_path, class: "btn btn-info" %>
+          <% else %>
+            <%= link_to 'Favorites list', favorites_path, class: "btn btn-success" %>
+            <%= link_to 'PicChum index', pictures_path, class: "btn btn-info" %>
           <% end %>
-        </div>
-        <%= link_to 'Favorites list', favorites_path, class: "btn btn-success" %>
-        <%= link_to 'PicChum index', pictures_path, class: "btn btn-info" %>
       </div>
     </div>
   </div>

@@ -30,7 +30,7 @@
                 <li class="nav-item"><%= link_to "Logout", session_path(current_user.id), method: :delete, class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
               <% else %>
                 <li class="nav-item"><%= link_to "Sign up", new_user_path, class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
-                <li class="nav-item"><%= link_to "Login", new_session_path,class: "nav-link px-lg-3 py-3 py-lg-4"%></li>
+                <li class="nav-item"><%= link_to "Login", new_session_path, class: "nav-link px-lg-3 py-3 py-lg-4" %></li>
               <% end %>
             </ul>
           </div>

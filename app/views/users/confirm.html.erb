@@ -1,0 +1,48 @@
+<!-- Page Header-->
+<header class="masthead" style="background-image: url(<%= asset_path 'contact-bg.jpg' %>)">
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="page-heading">
+            <h1>EDIT YOUR PicChum OK?</h1>
+            <span class="subheading">Have questions? I have answers.</span>
+          </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Main Content-->
+<main class="mb-4">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <h3>Send with the following contents？</h3>
+        <%= form_with(model: @user, local: true) do |form| %>
+          <%= form.hidden_field :user_image %>
+          <%= form.hidden_field :user_image_cache %>
+          <%= form.hidden_field :name %>
+          <%= form.hidden_field :email %>
+          <p>ユーザー画像</p>
+          <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
+          <%= form.hidden_field :image_cache %>
+          <p>ユーザー名</p>
+          <%= @user.name %><br>
+          <p>メールアドレス</p>
+          <%= @user.email %><br>
+          <p>パスワード</p>
+          <%= @user.password %>
+          <p>パスワード確認</p>
+          <%= @user.password_confirmation%>
+          <%= form.submit "更新" %>
+        <% end %>
+        <%= form_with(model: @user, local: true, url: new_user_path, method: "get") do |form| %>
+          <%= form.hidden_field :image %>
+          <%= form.hidden_field :image_cache %>
+          <%= form.hidden_field :name %>
+          <%= form.hidden_field :email %>
+          <%= form.submit "戻る", name: "back" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>
