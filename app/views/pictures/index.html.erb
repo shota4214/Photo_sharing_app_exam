@@ -4,8 +4,9 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="site-heading">
-          <h1>Clean Blog</h1>
-          <span class="subheading">A Blog Theme by Start Bootstrap</span>
+          <h1>PicChum一覧</h1>
+          <span class="subheading">〜Picture（写真）を通してChum（仲良し）になれますに〜</span><br>
+          <h1></h1>
         </div>
       </div>
     </div>
@@ -15,6 +16,8 @@
 <div class="container px-4 px-lg-5">
   <div class="row gx-4 gx-lg-5 justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-7">
+      <%= link_to "New PicChum", new_picture_path, class: "btn btn-primary" %>新規PicChum投稿<br>
+      <br>
       <% @pictures.each do |picture| %>
       <!-- Post preview-->
         <div class="post-preview">
@@ -24,11 +27,11 @@
           <td><h3 class="post-meta"><%= picture.user.name %></h3></td>
           <td><p class="post-meta"><%= time_ago_in_words(picture.created_at) %></p></td>
           <% if picture.user == current_user %>
-            <td><%= link_to 'Show', picture, class: "btn btn-outline-info" %></td>
-            <td><%= link_to 'Edit', edit_picture_path(picture), class: "btn btn-outline-info" %></td>
-            <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></td>
+            <td><%= link_to '詳細', picture, class: "btn btn-outline-info" %></td>
+            <td><%= link_to '編集', edit_picture_path(picture), class: "btn btn-outline-warning" %></td>
+            <td><%= link_to '削除', picture, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></td>
           <% else %>
-            <td><%= link_to 'Show', picture, class: "btn btn-outline-info" %></td>
+            <td><%= link_to '詳細', picture, class: "btn btn-outline-info" %></td>
           <% end %>
         </tr>
         </div>

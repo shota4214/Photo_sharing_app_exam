@@ -3,9 +3,8 @@
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
-        <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!</p>
         <div class="my-5">
-          <%= form_with(model: @user, local: true, url: choose_new_or_edit ) do |form| %>
+          <%= form_with(model: @user, local: true, url: user_choose_new_or_edit ) do |form| %>
             <% if @user.errors.any? %>
               <div id="error_explanation">
                 <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
@@ -17,27 +16,27 @@
               </div>
             <% end %>
             <div class="field">
-              <%= form.label :user_image, "画像変更→"%>
+              <%= form.label :user_image %>
               <%= image_tag(@user.user_image.url) if @user.user_image && @user.user_image.url %>
               <%= form.file_field :user_image %>
               <%= form.hidden_field :user_image_cache %>
-            </div>
+            </div><br>
             <div class="field">
               <%= form.label :name %>
               <%= form.text_field :name %>
-            </div>
+            </div><br>
             <div class="field">
               <%= form.label :email %>
               <%= form.email_field :email %>
-            <div>
+            </div><br>
             <div class="field">
               <%= form.label :password %>
               <%= form.password_field :password %>
-            </div>
+            </div><br>
             <div class="field">
               <%= form.label :password_confirmation %>
               <%= form.password_field :password_confirmation %>
-            </div>
+            </div><br>
             <div class="actions">
               <%= form.submit %>
             </div>

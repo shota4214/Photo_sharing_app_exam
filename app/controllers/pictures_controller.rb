@@ -61,11 +61,11 @@ class PicturesController < ApplicationController
   # DELETE /pictures/1 or /pictures/1.json
   def destroy
     if @picture.user != current_user
-      redirect_to new_picture_path, notice: "You can't erase someone else's PicChum"
+      redirect_to new_picture_path, notice: "このPicChumは削除できません"
     else
       @picture.destroy
       respond_to do |format|
-      format.html { redirect_to pictures_url, notice: "Picture was successfully destroyed." }
+      format.html { redirect_to pictures_url, notice: "PicChumを削除しました" }
       format.json { head :no_content }
       end
     end

@@ -4,8 +4,8 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="page-heading">
-          <h1>NEW PICTURE</h1>
-          <span class="subheading">Have questions? I have answers.</span>
+          <h1>PicChum投稿</h1>
+          <span class="subheading">〜Picture（写真）を通してChum（仲良し）になれますに〜</span><br>
         </div>
       </div>
     </div>
@@ -16,11 +16,10 @@
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
-        <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!</p>
+        <p>新規PicChumを投稿します。<br>写真の添付と投稿内容を入力してください。</p>
         <div class="my-5">
-          <h1>New Picture</h1>
           <%= render 'form', picture: @picture %>
-          <%= link_to 'Back', pictures_path %>
+          <%= link_to 'PicChum投稿一覧', pictures_path, class: "btn btn-outline-primary" %>
           </div>
         </div>
     </div>
