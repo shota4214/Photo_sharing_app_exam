@@ -34,7 +34,7 @@
               <%= form.label :ユーザー画像 %>
               <%= image_tag(@user.user_image.url) if @user.user_image && @user.user_image.url %>
               <%= form.file_field :user_image %>
-              <%= form.hidden_field :user_image_cache %>
+
             </div><br>
             <div class="field">
               <%= form.label :ユーザー名 %>
