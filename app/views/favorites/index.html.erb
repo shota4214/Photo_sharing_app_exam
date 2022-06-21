@@ -20,7 +20,7 @@
       <!-- Post preview-->
         <div class="post-preview">
         <tr>
-          <td><h2 class="post-title"><%= image_tag picture.image.url, width: '20%', height: '20%' %></h2></td>
+          <td><h2 class="post-title"><%= image_tag picture.picture_image.url, width: '20%', height: '20%' %></h2></td>
           <td><h3 class="post-subtitle"><%= picture.content %></h3></td>
           <td><h3 class="post-meta"><%= picture.user.name %></h3></td>
           <td><p class="post-meta"><%= time_ago_in_words(picture.created_at) %></p></td>

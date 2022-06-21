@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :image %>
-    <%= image_tag(picture.image.url) if picture.image && picture.image.url %>
-    <%= form.file_field :image %>
+    <%= form.label :画像 %>
+    <%= image_tag(picture.picture_image.url) if picture.picture_image && picture.picture_image.url %>
+    <%= form.file_field :picture_image %>
     <%= form.hidden_field :image_cache %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
+    <%= form.label :内容 %>
     <%= form.text_area :content %>
   </div>
 

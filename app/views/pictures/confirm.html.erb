@@ -18,17 +18,17 @@
       <div class="col-md-10 col-lg-8 col-xl-7">
         <h3>PicChumに投稿する内容は下記で良いですか？</h3>
         <%= form_with(model: @picture, local: true) do |form| %>
-          <%= form.hidden_field :image %>
+          <%= form.hidden_field :picture_image %>
           <%= form.hidden_field :content %>
           <p>写真</p>
-          <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
-          <%= form.hidden_field :image_cache %>
+          <%= image_tag(@picture.picture_image.url) if @picture.picture_image && @picture.picture_image.url %>
+          <%= form.hidden_field :picture_image_cache %>
           <p>内容</p>
           <%= @picture.content %><br>
           <%= form.submit  "push" %>
         <% end %>
         <%= form_with(model: @picture, local: true, url: new_picture_path, method: "get") do |form| %>
-          <%= form.hidden_field :image_cache %>
+          <%= form.hidden_field :picture_image_cache %>
           <%= form.hidden_field :content %>
           <%= form.submit "back", name: "back" %>
         <% end %>
