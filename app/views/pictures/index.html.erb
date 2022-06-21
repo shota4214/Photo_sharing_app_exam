@@ -29,7 +29,7 @@
           <% if picture.user == current_user %>
             <td><%= link_to '詳細', picture, class: "btn btn-outline-info" %></td>
             <td><%= link_to '編集', edit_picture_path(picture), class: "btn btn-outline-warning" %></td>
-            <td><%= link_to '削除', picture, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></td>
+            <td><%= link_to '削除', picture, method: :delete, data: { confirm: '本当に削除してもですか?' }, class: "btn btn-outline-danger" %></td>
           <% else %>
             <td><%= link_to '詳細', picture, class: "btn btn-outline-info" %></td>
           <% end %>
